@@ -1,0 +1,81 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="ShopModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityContainer Name="ShopEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Accounts" EntityType="ShopModel.Account" />
+    <EntitySet Name="Cart_Item" EntityType="ShopModel.Cart_Item" />
+    <EntitySet Name="Products" EntityType="ShopModel.Product" />
+    <EntitySet Name="sysdiagrams" EntityType="ShopModel.sysdiagram" />
+    <AssociationSet Name="FK_Cart_Item_Account" Association="ShopModel.FK_Cart_Item_Account">
+      <End Role="Account" EntitySet="Accounts" />
+      <End Role="Cart_Item" EntitySet="Cart_Item" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Cart_Item_Product" Association="ShopModel.FK_Cart_Item_Product">
+      <End Role="Product" EntitySet="Products" />
+      <End Role="Cart_Item" EntitySet="Cart_Item" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="Account">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="username" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="password" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Cart_Item" Relationship="ShopModel.FK_Cart_Item_Account" FromRole="Account" ToRole="Cart_Item" />
+  </EntityType>
+  <EntityType Name="Cart_Item">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="session_id" Type="Int32" Nullable="false" />
+    <Property Name="product_id" Type="Int32" Nullable="false" />
+    <Property Name="quantity" Type="Int32" Nullable="false" />
+    <Property Name="price" Type="Int32" />
+    <NavigationProperty Name="Account" Relationship="ShopModel.FK_Cart_Item_Account" FromRole="Cart_Item" ToRole="Account" />
+    <NavigationProperty Name="Product" Relationship="ShopModel.FK_Cart_Item_Product" FromRole="Cart_Item" ToRole="Product" />
+  </EntityType>
+  <EntityType Name="Product">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="price" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Cart_Item" Relationship="ShopModel.FK_Cart_Item_Product" FromRole="Product" ToRole="Cart_Item" />
+  </EntityType>
+  <EntityType Name="sysdiagram">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <Association Name="FK_Cart_Item_Account">
+    <End Type="ShopModel.Account" Role="Account" Multiplicity="1" />
+    <End Type="ShopModel.Cart_Item" Role="Cart_Item" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Account">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Cart_Item">
+        <PropertyRef Name="session_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Cart_Item_Product">
+    <End Type="ShopModel.Product" Role="Product" Multiplicity="1" />
+    <End Type="ShopModel.Cart_Item" Role="Cart_Item" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Product">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Cart_Item">
+        <PropertyRef Name="product_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

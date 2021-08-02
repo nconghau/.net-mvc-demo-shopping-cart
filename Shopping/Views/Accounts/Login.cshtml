@@ -1,0 +1,29 @@
+﻿@{
+    Layout = "~/Views/Shared/Layout.cshtml";
+}
+<section class="bg0 p-t-104 p-b-116">
+    <div class="container" style="display:flex;justify-content:center">
+            <div class="size-210 bor10 p-lr-70 p-t-55">
+                <form href="@Url.Action("Login", "Accounts")" method="post">
+                    <h4 class="mtext-105 cl2 txt-center p-b-30">
+                        Login
+                    </h4>
+
+                    <div class="bor8 m-b-20 how-pos4-parent">
+                        <input class="stext-111 cl2 plh3 size-116 p-l-62 p-r-30" type="text" name="username" placeholder="Your Email Address">
+                        <img class="how-pos4 pointer-none" src="@Url.Content("~/images/icons/icon-email.png")" alt="ICON">
+                    </div>
+
+                    <div class="bor8 m-b-20 how-pos4-parent">
+                        <input class="stext-111 cl2 plh3 size-116 p-l-62 p-r-30" type="text" name="password" placeholder="Your Password">
+                        <img class="how-pos4 pointer-none" src="@Url.Content("~/images/icons/icon-password.png")" alt="ICON">
+                    </div>
+
+                    <div class="bor8 m-b-20 how-pos4-parent">
+                        <input class="stext-111 cl2 plh3 size-116 p-l-62 p-r-30" type="submit" value="Login">
+                    </div>
+
+                </form>
+        </div>
+    </div>
+</section>	
