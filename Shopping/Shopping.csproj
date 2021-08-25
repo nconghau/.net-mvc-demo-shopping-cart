@@ -132,17 +132,17 @@
     <Compile Include="Areas\Admin\Controllers\AdminAccountController.cs" />
     <Compile Include="Areas\Admin\Controllers\AdminCartItemController.cs" />
     <Compile Include="Areas\Admin\Controllers\AdminProductController.cs" />
-    <Compile Include="Controllers\AccountsController.cs" />
+    <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\CartController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Controllers\ProductsController.cs" />
+    <Compile Include="Controllers\ProductController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\Account.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\Cart_Item.cs">
+    <Compile Include="Models\CartItem.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Model.Context.cs">
@@ -163,7 +163,7 @@
     <Compile Include="Models\Product.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\sysdiagram.cs">
+    <Compile Include="Models\sysdiagrams.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -371,13 +371,6 @@
     <Content Include="fonts\Poppins\Poppins-SemiBoldItalic.ttf" />
     <Content Include="fonts\Poppins\Poppins-Thin.ttf" />
     <Content Include="fonts\Poppins\Poppins-ThinItalic.ttf" />
-    <EntityDeploy Include="Models\Model.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>Model.Designer.cs</LastGenOutput>
-    </EntityDeploy>
-    <Content Include="Models\Model.edmx.diagram">
-      <DependentUpon>Model.edmx</DependentUpon>
-    </Content>
     <Content Include="Areas\Admin\Views\web.config" />
     <Content Include="Areas\Admin\Views\AdminCartItem\Details.cshtml" />
     <Content Include="Areas\Admin\Views\AdminCartItem\Index.cshtml" />
@@ -389,6 +382,13 @@
     <Content Include="Areas\Admin\Views\AdminAccount\Create.cshtml" />
     <Content Include="Areas\Admin\Views\AdminAccount\Details.cshtml" />
     <Content Include="Areas\Admin\Views\AdminAccount\Index.cshtml" />
+    <EntityDeploy Include="Models\Model.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>Model.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\Model.edmx.diagram">
+      <DependentUpon>Model.edmx</DependentUpon>
+    </Content>
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
@@ -416,7 +416,7 @@
     <Content Include="vendor\slick\slick-theme.scss" />
     <Content Include="vendor\slick\slick.less" />
     <Content Include="vendor\slick\slick.scss" />
-    <Content Include="Views\Products\Details.cshtml" />
+    <Content Include="Views\Product\Details.cshtml" />
     <Content Include="Views\Accounts\Login.cshtml" />
     <Content Include="Views\Cart\Index.cshtml" />
     <None Include="Views\Shared\Layout.cshtml" />
@@ -488,7 +488,7 @@
     <Content Include="vendor\slick\slick.js" />
     <Content Include="vendor\slick\slick.min.js" />
     <Content Include="vendor\sweetalert\sweetalert.min.js" />
-    <None Include="Views\Products\index2.cshtml" />
+    <None Include="Views\Product\index.cshtml" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>

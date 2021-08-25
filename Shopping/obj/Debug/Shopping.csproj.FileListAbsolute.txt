@@ -51,6 +51,8 @@ D:\Win\Dev\BE\Shopping\Shopping\bin\roslyn\vbc.rsp
 D:\Win\Dev\BE\Shopping\Shopping\bin\roslyn\VBCSCompiler.exe
 D:\Win\Dev\BE\Shopping\Shopping\bin\roslyn\VBCSCompiler.exe.config
 D:\Win\Dev\BE\Shopping\Shopping\bin\Antlr3.Runtime.dll
+D:\Win\Dev\BE\Shopping\Shopping\bin\EntityFramework.dll
+D:\Win\Dev\BE\Shopping\Shopping\bin\EntityFramework.SqlServer.dll
 D:\Win\Dev\BE\Shopping\Shopping\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
 D:\Win\Dev\BE\Shopping\Shopping\bin\Microsoft.Web.Infrastructure.dll
 D:\Win\Dev\BE\Shopping\Shopping\bin\Newtonsoft.Json.dll
@@ -62,6 +64,8 @@ D:\Win\Dev\BE\Shopping\Shopping\bin\System.Web.WebPages.Deployment.dll
 D:\Win\Dev\BE\Shopping\Shopping\bin\System.Web.WebPages.dll
 D:\Win\Dev\BE\Shopping\Shopping\bin\System.Web.WebPages.Razor.dll
 D:\Win\Dev\BE\Shopping\Shopping\bin\WebGrease.dll
+D:\Win\Dev\BE\Shopping\Shopping\bin\EntityFramework.xml
+D:\Win\Dev\BE\Shopping\Shopping\bin\EntityFramework.SqlServer.xml
 D:\Win\Dev\BE\Shopping\Shopping\bin\System.Web.Helpers.xml
 D:\Win\Dev\BE\Shopping\Shopping\bin\System.Web.Mvc.xml
 D:\Win\Dev\BE\Shopping\Shopping\bin\System.Web.Optimization.xml
@@ -72,12 +76,7 @@ D:\Win\Dev\BE\Shopping\Shopping\bin\System.Web.WebPages.Razor.xml
 D:\Win\Dev\BE\Shopping\Shopping\bin\Newtonsoft.Json.xml
 D:\Win\Dev\BE\Shopping\Shopping\bin\Antlr3.Runtime.pdb
 D:\Win\Dev\BE\Shopping\Shopping\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
-D:\Win\Dev\BE\Shopping\Shopping\obj\Debug\Shopping.csproj.AssemblyReference.cache
 D:\Win\Dev\BE\Shopping\Shopping\obj\Debug\Shopping.csproj.CoreCompileInputs.cache
 D:\Win\Dev\BE\Shopping\Shopping\obj\Debug\Shopping.csproj.CopyComplete
 D:\Win\Dev\BE\Shopping\Shopping\obj\Debug\Shopping.dll
 D:\Win\Dev\BE\Shopping\Shopping\obj\Debug\Shopping.pdb
-D:\Win\Dev\BE\Shopping\Shopping\bin\EntityFramework.dll
-D:\Win\Dev\BE\Shopping\Shopping\bin\EntityFramework.xml
-D:\Win\Dev\BE\Shopping\Shopping\bin\EntityFramework.SqlServer.dll
-D:\Win\Dev\BE\Shopping\Shopping\bin\EntityFramework.SqlServer.xml

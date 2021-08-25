@@ -1,4 +1,4 @@
-﻿@model List<Shopping.Models.Cart_Item>
+﻿@model List<Shopping.Models.CartItem>
 
 @{
     ViewBag.Title = "Details";
@@ -28,8 +28,8 @@
                                     </tr>
                                     @foreach (var item in Model)
                                     {
-                                        @Html.Hidden("product_id", item.Product.id)
-                                        @Html.Hidden("cart_id", item.id)
+                                        @Html.Hidden("productId", item.Product.id)
+                                        @Html.Hidden("cartId", item.id)
                                         <tr class="table_row">
                                             <td class="column-1">
                                                 <div class="how-itemcart1">

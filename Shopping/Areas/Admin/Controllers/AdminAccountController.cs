@@ -1,12 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data;
+﻿using Shopping.Models;
 using System.Data.Entity;
 using System.Linq;
 using System.Net;
-using System.Web;
 using System.Web.Mvc;
-using Shopping.Models;
 
 namespace Shopping.Areas.Admin.Controllers
 {
@@ -17,7 +13,7 @@ namespace Shopping.Areas.Admin.Controllers
         // GET: Admin/AdminAccount
         public ActionResult Index()
         {
-            return View(db.Accounts.ToList());
+            return View(db.Account.ToList());
         }
 
         // GET: Admin/AdminAccount/Details/5
@@ -27,7 +23,7 @@ namespace Shopping.Areas.Admin.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Account account = db.Accounts.Find(id);
+            Account account = db.Account.Find(id);
             if (account == null)
             {
                 return HttpNotFound();
@@ -50,7 +46,7 @@ namespace Shopping.Areas.Admin.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Accounts.Add(account);
+                db.Account.Add(account);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
@@ -65,7 +61,7 @@ namespace Shopping.Areas.Admin.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Account account = db.Accounts.Find(id);
+            Account account = db.Account.Find(id);
             if (account == null)
             {
                 return HttpNotFound();
@@ -96,7 +92,7 @@ namespace Shopping.Areas.Admin.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Account account = db.Accounts.Find(id);
+            Account account = db.Account.Find(id);
             if (account == null)
             {
                 return HttpNotFound();
@@ -109,8 +105,8 @@ namespace Shopping.Areas.Admin.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Account account = db.Accounts.Find(id);
-            db.Accounts.Remove(account);
+            Account account = db.Account.Find(id);
+            db.Account.Remove(account);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

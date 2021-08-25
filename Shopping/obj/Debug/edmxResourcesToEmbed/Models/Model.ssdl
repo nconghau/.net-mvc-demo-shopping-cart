@@ -8,13 +8,13 @@
     <Property Name="username" Type="varchar" MaxLength="50" Nullable="false" />
     <Property Name="password" Type="varchar" MaxLength="50" Nullable="false" />
   </EntityType>
-  <EntityType Name="Cart_Item">
+  <EntityType Name="CartItem">
     <Key>
       <PropertyRef Name="id" />
     </Key>
     <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="session_id" Type="int" Nullable="false" />
-    <Property Name="product_id" Type="int" Nullable="false" />
+    <Property Name="sessionId" Type="int" Nullable="false" />
+    <Property Name="productId" Type="int" Nullable="false" />
     <Property Name="quantity" Type="int" Nullable="false" />
     <Property Name="price" Type="int" />
   </EntityType>
@@ -36,42 +36,42 @@
     <Property Name="version" Type="int" />
     <Property Name="definition" Type="varbinary(max)" />
   </EntityType>
-  <Association Name="FK_Cart_Item_Account">
+  <Association Name="FK_cartItem_Account">
     <End Role="Account" Type="Self.Account" Multiplicity="1" />
-    <End Role="Cart_Item" Type="Self.Cart_Item" Multiplicity="*" />
+    <End Role="CartItem" Type="Self.CartItem" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Account">
         <PropertyRef Name="id" />
       </Principal>
-      <Dependent Role="Cart_Item">
-        <PropertyRef Name="session_id" />
+      <Dependent Role="CartItem">
+        <PropertyRef Name="sessionId" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK_Cart_Item_Product">
+  <Association Name="FK_cartItem_Product">
     <End Role="Product" Type="Self.Product" Multiplicity="1" />
-    <End Role="Cart_Item" Type="Self.Cart_Item" Multiplicity="*" />
+    <End Role="CartItem" Type="Self.CartItem" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Product">
         <PropertyRef Name="id" />
       </Principal>
-      <Dependent Role="Cart_Item">
-        <PropertyRef Name="product_id" />
+      <Dependent Role="CartItem">
+        <PropertyRef Name="productId" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
   <EntityContainer Name="ShopModelStoreContainer">
     <EntitySet Name="Account" EntityType="Self.Account" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="Cart_Item" EntityType="Self.Cart_Item" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="CartItem" EntityType="Self.CartItem" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Product" EntityType="Self.Product" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
-    <AssociationSet Name="FK_Cart_Item_Account" Association="Self.FK_Cart_Item_Account">
+    <AssociationSet Name="FK_cartItem_Account" Association="Self.FK_cartItem_Account">
       <End Role="Account" EntitySet="Account" />
-      <End Role="Cart_Item" EntitySet="Cart_Item" />
+      <End Role="CartItem" EntitySet="CartItem" />
     </AssociationSet>
-    <AssociationSet Name="FK_Cart_Item_Product" Association="Self.FK_Cart_Item_Product">
+    <AssociationSet Name="FK_cartItem_Product" Association="Self.FK_cartItem_Product">
       <End Role="Product" EntitySet="Product" />
-      <End Role="Cart_Item" EntitySet="Cart_Item" />
+      <End Role="CartItem" EntitySet="CartItem" />
     </AssociationSet>
   </EntityContainer>
 </Schema>

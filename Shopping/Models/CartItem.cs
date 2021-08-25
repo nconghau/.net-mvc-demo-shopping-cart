@@ -12,11 +12,11 @@ namespace Shopping.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class Cart_Item
+    public partial class CartItem
     {
         public int id { get; set; }
-        public int session_id { get; set; }
-        public int product_id { get; set; }
+        public int sessionId { get; set; }
+        public int productId { get; set; }
         public int quantity { get; set; }
         public Nullable<int> price { get; set; }
     

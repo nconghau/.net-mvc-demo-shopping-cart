@@ -1,12 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data;
+﻿using Shopping.Models;
 using System.Data.Entity;
 using System.Linq;
 using System.Net;
-using System.Web;
 using System.Web.Mvc;
-using Shopping.Models;
 
 namespace Shopping.Areas.Admin.Controllers
 {
@@ -17,8 +13,8 @@ namespace Shopping.Areas.Admin.Controllers
         // GET: Admin/AdminCartItem
         public ActionResult Index()
         {
-            var cart_Item = db.Cart_Item.Include(c => c.Account).Include(c => c.Product);
-            return View(cart_Item.ToList());
+            var cartItem = db.CartItem.Include(c => c.Account).Include(c => c.Product);
+            return View(cartItem.ToList());
         }
 
         // GET: Admin/AdminCartItem/Details/5
@@ -28,19 +24,19 @@ namespace Shopping.Areas.Admin.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Cart_Item cart_Item = db.Cart_Item.Find(id);
-            if (cart_Item == null)
+            CartItem cartItem = db.CartItem.Find(id);
+            if (cartItem == null)
             {
                 return HttpNotFound();
             }
-            return View(cart_Item);
+            return View(cartItem);
         }
 
         // GET: Admin/AdminCartItem/Create
         public ActionResult Create()
         {
-            ViewBag.session_id = new SelectList(db.Accounts, "id", "username");
-            ViewBag.product_id = new SelectList(db.Products, "id", "name");
+            ViewBag.sessionId = new SelectList(db.Account, "id", "username");
+            ViewBag.productId = new SelectList(db.Product, "id", "name");
             return View();
         }
 
@@ -49,18 +45,18 @@ namespace Shopping.Areas.Admin.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "id,session_id,product_id,quantity,price")] Cart_Item cart_Item)
+        public ActionResult Create([Bind(Include = "id,sessionId,productId,quantity,price")] CartItem cartItem)
         {
             if (ModelState.IsValid)
             {
-                db.Cart_Item.Add(cart_Item);
+                db.CartItem.Add(cartItem);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            ViewBag.session_id = new SelectList(db.Accounts, "id", "username", cart_Item.session_id);
-            ViewBag.product_id = new SelectList(db.Products, "id", "name", cart_Item.product_id);
-            return View(cart_Item);
+            ViewBag.sessionId = new SelectList(db.Account, "id", "username", cartItem.sessionId);
+            ViewBag.productId = new SelectList(db.Product, "id", "name", cartItem.productId);
+            return View(cartItem);
         }
 
         // GET: Admin/AdminCartItem/Edit/5
@@ -70,14 +66,14 @@ namespace Shopping.Areas.Admin.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Cart_Item cart_Item = db.Cart_Item.Find(id);
-            if (cart_Item == null)
+            CartItem cartItem = db.CartItem.Find(id);
+            if (cartItem == null)
             {
                 return HttpNotFound();
             }
-            ViewBag.session_id = new SelectList(db.Accounts, "id", "username", cart_Item.session_id);
-            ViewBag.product_id = new SelectList(db.Products, "id", "name", cart_Item.product_id);
-            return View(cart_Item);
+            ViewBag.sessionId = new SelectList(db.Account, "id", "username", cartItem.sessionId);
+            ViewBag.productId = new SelectList(db.Product, "id", "name", cartItem.productId);
+            return View(cartItem);
         }
 
         // POST: Admin/AdminCartItem/Edit/5
@@ -85,17 +81,17 @@ namespace Shopping.Areas.Admin.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "id,session_id,product_id,quantity,price")] Cart_Item cart_Item)
+        public ActionResult Edit([Bind(Include = "id,sessionId,productId,quantity,price")] CartItem cartItem)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(cart_Item).State = EntityState.Modified;
+                db.Entry(cartItem).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.session_id = new SelectList(db.Accounts, "id", "username", cart_Item.session_id);
-            ViewBag.product_id = new SelectList(db.Products, "id", "name", cart_Item.product_id);
-            return View(cart_Item);
+            ViewBag.sessionId = new SelectList(db.Account, "id", "username", cartItem.sessionId);
+            ViewBag.productId = new SelectList(db.Product, "id", "name", cartItem.productId);
+            return View(cartItem);
         }
 
         // GET: Admin/AdminCartItem/Delete/5
@@ -105,12 +101,12 @@ namespace Shopping.Areas.Admin.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Cart_Item cart_Item = db.Cart_Item.Find(id);
-            if (cart_Item == null)
+            CartItem cartItem = db.CartItem.Find(id);
+            if (cartItem == null)
             {
                 return HttpNotFound();
             }
-            return View(cart_Item);
+            return View(cartItem);
         }
 
         // POST: Admin/AdminCartItem/Delete/5
@@ -118,8 +114,8 @@ namespace Shopping.Areas.Admin.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Cart_Item cart_Item = db.Cart_Item.Find(id);
-            db.Cart_Item.Remove(cart_Item);
+            CartItem cartItem = db.CartItem.Find(id);
+            db.CartItem.Remove(cartItem);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

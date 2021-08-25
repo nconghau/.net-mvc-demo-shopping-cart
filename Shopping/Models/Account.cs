@@ -17,7 +17,7 @@ namespace Shopping.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Account()
         {
-            this.Cart_Item = new HashSet<Cart_Item>();
+            this.CartItem = new HashSet<CartItem>();
         }
     
         public int id { get; set; }
@@ -25,6 +25,6 @@ namespace Shopping.Models
         public string password { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Cart_Item> Cart_Item { get; set; }
+        public virtual ICollection<CartItem> CartItem { get; set; }
     }
 }

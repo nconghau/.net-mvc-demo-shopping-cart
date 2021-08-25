@@ -72,7 +72,7 @@
                 <nav class="limiter-menu-desktop container">
 
                     <!-- Logo desktop -->
-                    <a href="@Url.Action("Index2", "Products")" class="logo">
+                    <a href="@Url.Action("Index", "Product")" class="logo">
                         <img src="@Url.Content("~/images/icons/logo-01.png")" alt="IMG-LOGO">
                     </a>
 
@@ -80,11 +80,11 @@
                     <div class="menu-desktop">
                         <ul class="main-menu">
                             <li class="active-menu">
-                                <a href="@Url.Action("Index2", "Products")">Home</a>
+                                <a href="@Url.Action("Index", "Product")">Home</a>
                             </li>
 
                             <li>
-                                <a href="#">Shop</a>
+                                <a href="@Url.Action("Index", "AdminProduct", new { Area = "Admin" })">Admin</a>
                             </li>
 
                             <li class="label1" data-label1="hot">
@@ -104,7 +104,7 @@
                             </li>
 
                             <li>
-                                <a href="@Url.Action("Login", "Accounts")">Login</a>
+                                <a href="@Url.Action("Login", "Account")">Login</a>
                             </li>
                         </ul>
                     </div>

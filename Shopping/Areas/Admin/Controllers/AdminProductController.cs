@@ -1,12 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data;
+﻿using Shopping.Models;
 using System.Data.Entity;
 using System.Linq;
 using System.Net;
-using System.Web;
 using System.Web.Mvc;
-using Shopping.Models;
 
 namespace Shopping.Areas.Admin.Controllers
 {
@@ -17,7 +13,7 @@ namespace Shopping.Areas.Admin.Controllers
         // GET: Admin/AdminProduct
         public ActionResult Index()
         {
-            return View(db.Products.ToList());
+            return View(db.Product.ToList());
         }
 
         // GET: Admin/AdminProduct/Details/5
@@ -27,7 +23,7 @@ namespace Shopping.Areas.Admin.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Product product = db.Products.Find(id);
+            Product product = db.Product.Find(id);
             if (product == null)
             {
                 return HttpNotFound();
@@ -50,7 +46,7 @@ namespace Shopping.Areas.Admin.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Products.Add(product);
+                db.Product.Add(product);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
@@ -65,7 +61,7 @@ namespace Shopping.Areas.Admin.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Product product = db.Products.Find(id);
+            Product product = db.Product.Find(id);
             if (product == null)
             {
                 return HttpNotFound();
@@ -96,7 +92,7 @@ namespace Shopping.Areas.Admin.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Product product = db.Products.Find(id);
+            Product product = db.Product.Find(id);
             if (product == null)
             {
                 return HttpNotFound();
@@ -109,8 +105,8 @@ namespace Shopping.Areas.Admin.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Product product = db.Products.Find(id);
-            db.Products.Remove(product);
+            Product product = db.Product.Find(id);
+            db.Product.Remove(product);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

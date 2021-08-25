@@ -108,7 +108,7 @@
 
                                 @if (Session["userid"] != null)
                                 {
-                                    <form action="@Url.Action("AddToCart", "Products")" method="post">
+                                    <form action="@Url.Action("AddToCart", "Product")" method="post">
                                         <input name="id" type="number" value="@Model.id" hidden />
                                         <div class="wrap-num-product flex-w m-r-20 m-tb-10">
                                             <div class="btn-num-product-down cl8 hov-btn3 trans-04 flex-c-m">
@@ -126,7 +126,7 @@
                                 else
                                 {
 
-                                    <a href="@Url.Action("Login","Accounts")">
+                                    <a href="@Url.Action("Login","Account")">
                                         <button class="flex-c-m stext-101 cl0 size-101 bg1 bor1 hov-btn1 p-lr-15 trans-04 js-addcart-detail">
                                             Login Now 
                                         </button>

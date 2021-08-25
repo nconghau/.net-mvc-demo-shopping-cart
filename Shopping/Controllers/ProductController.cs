@@ -1,32 +1,27 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data;
-using System.Data.Entity;
+﻿using Shopping.Models;
 using System.Linq;
 using System.Net;
-using System.Web;
 using System.Web.Mvc;
-using Shopping.Models;
 
 namespace Shopping.Controllers
 {
-    public class ProductsController : Controller
+    public class ProductController : Controller
     {
         private ShopEntities db = new ShopEntities();
 
-        public ActionResult Index2()
+        public ActionResult Index()
         {
-            return View(db.Products.ToList());
+            return View(db.Product.ToList());
         }
 
-        // GET: Admin/AdminProducts/Details/5
+        // GET: Admin/AdminProduct/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Product product = db.Products.Find(id);
+            Product product = db.Product.Find(id);
             if (product == null)
             {
                 return HttpNotFound();
@@ -37,17 +32,17 @@ namespace Shopping.Controllers
         [HttpPost]
         public ActionResult AddToCart(int id, int quantity)
         {
-            var product = db.Products.Find(id);
-            Cart_Item cart_Item = new Cart_Item();
-            cart_Item.product_id = id;
-            cart_Item.quantity = quantity;
-            cart_Item.price = product.price;
-            cart_Item.session_id = int.Parse(Session["userid"].ToString());
-            if(cart_Item != null)
+            var product = db.Product.Find(id);
+            CartItem cartItem = new CartItem();
+            cartItem.productId = id;
+            cartItem.quantity = quantity;
+            cartItem.price = product.price;
+            cartItem.sessionId = int.Parse(Session["userid"].ToString());
+            if (cartItem != null)
             {
-                db.Cart_Item.Add(cart_Item);
+                db.CartItem.Add(cartItem);
                 db.SaveChanges();
-                return Redirect("Index2");
+                return Redirect("Index");
             }
             return View();
 

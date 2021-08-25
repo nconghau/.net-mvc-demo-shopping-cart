@@ -1,12 +1,8 @@
-﻿using System;
+﻿using Shopping.Models;
 using System.Collections.Generic;
-using System.Data;
 using System.Data.Entity;
 using System.Linq;
-using System.Net;
-using System.Web;
 using System.Web.Mvc;
-using Shopping.Models;
 
 namespace Shopping.Controllers
 {
@@ -20,50 +16,48 @@ namespace Shopping.Controllers
 
             if (Session["userid"] != null)
             {
-                var cart_Item = db.Cart_Item
+                var cartItem = db.CartItem
                     .Include(c => c.Account)
                     .Include(c => c.Product).ToList();
-                var my_cart = new List<Cart_Item>();
+                var myCart = new List<CartItem>();
                 int session = int.Parse(Session["userid"].ToString());
-                foreach (var item in cart_Item)
+                foreach (var item in cartItem)
                 {
 
-                    if (item.session_id.Equals(session))
+                    if (item.sessionId.Equals(session))
                     {
-                        my_cart.Add(item);
+                        myCart.Add(item);
                     }
                 }
-
-                return View(my_cart.ToList());
+                return View(myCart.ToList());
             }
             else
             {
-                var cart_Item = new List<Cart_Item>();
-                return View(cart_Item.ToList());
+                var cartItem = new List<CartItem>();
+                return View(cartItem.ToList());
             }
-            return View();
         }
 
         [HttpPost]
         public ActionResult UpdateCart(FormCollection formCollection)
         {
-            string[] product_ids = formCollection.GetValues("product_id");
+            string[] productIds = formCollection.GetValues("productId");
             string[] quantitys = formCollection.GetValues("quantity");
-            string[] cart_ids = formCollection.GetValues("cart_id");
-            if (product_ids != null && Session["userid"] != null)
-                for (int i = 0; i < product_ids.Length; i++)
+            string[] cartIds = formCollection.GetValues("cartId");
+            if (productIds != null && Session["userid"] != null)
+                for (int i = 0; i < productIds.Length; i++)
                 {
                     if (int.Parse(quantitys[i]) > 0)
                     {
-                        var cartItem = db.Cart_Item.Find(int.Parse(cart_ids[i]));
+                        var cartItem = db.CartItem.Find(int.Parse(cartIds[i]));
                         cartItem.quantity = int.Parse(quantitys[i]);
                         db.Entry(cartItem).State = EntityState.Modified;
                         db.SaveChanges();
                     }
                     else
                     {
-                        var cartItem = db.Cart_Item.Find(int.Parse(cart_ids[i]));
-                        db.Cart_Item.Remove(cartItem);
+                        var cartItem = db.CartItem.Find(int.Parse(cartIds[i]));
+                        db.CartItem.Remove(cartItem);
                         db.SaveChanges();
 
                     }
@@ -77,7 +71,7 @@ namespace Shopping.Controllers
             //ShoppingCart.Clear();
             //Session["ShoppingCart"] = ShoppingCart;
             //return RedirectToAction("Index");
-            return RedirectToAction("Index2", "Products");
+            return RedirectToAction("Index", "Product");
         }
 
         protected override void Dispose(bool disposing)
