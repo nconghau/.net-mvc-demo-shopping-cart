@@ -5,5 +5,5 @@ Small project CRUD basic for .net MVC 5
 - .net MVC 5
 - Template https://github.com/nconghau/cozastore-template
 # Note
-- Layer Models connect SQL Server
-- Admin use layout support .net mvc
+- Layer Models connect SQL Server 2019
+- Admin use layout support of .net mvc
